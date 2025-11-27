@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { X, MessageCircle, Send, Sparkles, Mic } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Product } from "../types";
-import { aiProductQA } from "../actions";
+import { GeminiService } from "../services/geminiService";
+import ReactMarkdown from 'react-markdown';
 
 interface ProductQAProps {
   product: Product;
@@ -14,13 +15,13 @@ interface QAItem {
   answer: string;
   confidence: number;
   followUpQuestions: string[];
+  suggestedProduct?: string;
 }
 
 const ProductQA: React.FC<ProductQAProps> = ({ product, onClose }) => {
   const [question, setQuestion] = useState("");
   const [qaHistory, setQaHistory] = useState<QAItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [sessionId] = useState(() => `session-${product.id}-${Date.now()}`);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const [listening, setListening] = useState(false);
   const [hasSpeechSupport, setHasSpeechSupport] = useState(false);
@@ -85,10 +86,16 @@ const ProductQA: React.FC<ProductQAProps> = ({ product, onClose }) => {
     ]);
 
     try {
-      const response = await aiProductQA(
+      const history = qaHistory.flatMap(item => [
+        { role: "user", content: item.question },
+        { role: "assistant", content: item.answer }
+      ]).filter(msg => msg.content !== "");
+
+      const geminiService = GeminiService.getInstance();
+      const response = await geminiService.answerProductQuestion(
         product.id,
         currentQuestion,
-        sessionId
+        history
       );
 
       // Update the last item in history with the AI response
@@ -99,6 +106,7 @@ const ProductQA: React.FC<ProductQAProps> = ({ product, onClose }) => {
           lastItem.answer = response.answer;
           lastItem.confidence = response.confidence;
           lastItem.followUpQuestions = response.followUpQuestions;
+          lastItem.suggestedProduct = response.suggestedProduct;
         }
         if (lastInputWasVoice.current) {
           try {
@@ -377,9 +385,19 @@ const ProductQA: React.FC<ProductQAProps> = ({ product, onClose }) => {
                               confidence)
                             </span>
                           </div>
-                          <p className="text-gray-900 mb-4 leading-relaxed whitespace-pre-wrap">
-                            {qa.answer}
-                          </p>
+                          <div className="text-gray-900 mb-4 leading-relaxed">
+                            <ReactMarkdown 
+                              components={{
+                                ul: ({...props}) => <ul className="list-disc pl-4 mb-2" {...props} />,
+                                ol: ({...props}) => <ol className="list-decimal pl-4 mb-2" {...props} />,
+                                li: ({...props}) => <li className="mb-1" {...props} />,
+                                strong: ({...props}) => <span className="font-bold text-blue-900" {...props} />,
+                                p: ({...props}) => <p className="mb-2 last:mb-0" {...props} />
+                              }}
+                            >
+                              {qa.answer}
+                            </ReactMarkdown>
+                          </div>
                           {qa.followUpQuestions.length > 0 && (
                             <div>
                               <h4 className="text-sm font-semibold text-gray-800 mb-2">
@@ -396,6 +414,31 @@ const ProductQA: React.FC<ProductQAProps> = ({ product, onClose }) => {
                                   </button>
                                 ))}
                               </div>
+                            </div>
+                          )}
+                          {qa.suggestedProduct && (
+                            <div className="mt-4 pt-4 border-t border-gray-200">
+                              <p className="text-sm text-gray-600 mb-2">
+                                You might be interested in:
+                              </p>
+                              <button
+                                onClick={() => {
+                                  onClose();
+                                  // Trigger search for the suggested product
+                                  const searchBar = document.querySelector('input[type="text"]') as HTMLInputElement;
+                                  if (searchBar) {
+                                    searchBar.value = qa.suggestedProduct || '';
+                                    searchBar.dispatchEvent(new Event('input', { bubbles: true }));
+                                    const form = searchBar.closest('form');
+                                    if (form) {
+                                      form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+                                    }
+                                  }
+                                }}
+                                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium text-sm"
+                              >
+                                View {qa.suggestedProduct}
+                              </button>
                             </div>
                           )}
                         </div>

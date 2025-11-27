@@ -3,6 +3,7 @@ import { ArrowLeft, ShoppingCart, Star, ThumbsUp, ThumbsDown, MessageCircle, Tre
 import { motion, AnimatePresence } from 'framer-motion';
 import { Product } from '../types';
 import ProductQA from './ProductQA';
+import { GeminiService } from '../services/geminiService';
 
 interface ProductDetailPageProps {
   product: Product;
@@ -19,8 +20,25 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 }) => {
   const [showQA, setShowQA] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [reviewText, setReviewText] = useState("");
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [currentSentiment, setCurrentSentiment] = useState(product.sentiment);
 
-  const sentimentScore = Math.round((product.sentiment.positive / (product.sentiment.positive + product.sentiment.negative)) * 100);
+  const sentimentScore = Math.round((currentSentiment.positive / (currentSentiment.positive + currentSentiment.negative)) * 100);
+
+  const handleReviewSubmit = async () => {
+    if (!reviewText.trim()) return;
+    setIsAnalyzing(true);
+    try {
+      const result = await GeminiService.getInstance().analyzeReview(reviewText, currentSentiment);
+      setCurrentSentiment(result);
+      setReviewText("");
+    } catch (error) {
+      console.error("Review analysis failed", error);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
 
   const handleAddToCart = () => {
     onAddToCart(product, quantity);
@@ -54,7 +72,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <div className="flex items-center gap-2">
               <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
               <span className="font-medium">{(sentimentScore / 20).toFixed(1)}</span>
-              <span className="text-white">({product.sentiment.positive + product.sentiment.negative} reviews)</span>
+              <span className="text-white">({currentSentiment.positive + currentSentiment.negative} reviews)</span>
             </div>
           </div>
         </div>
@@ -182,21 +200,21 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     <ThumbsUp className="w-5 h-5 text-green-600" />
                     <span className="font-semibold text-green-600">Positive</span>
                   </div>
-                  <span className="text-xl font-bold text-green-600">{product.sentiment.positive}%</span>
+                  <span className="text-xl font-bold text-green-600">{currentSentiment.positive}%</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <ThumbsDown className="w-5 h-5 text-red-600" />
                     <span className="font-semibold text-red-600">Negative</span>
                   </div>
-                  <span className="text-xl font-bold text-red-600">{product.sentiment.negative}%</span>
+                  <span className="text-xl font-bold text-red-600">{currentSentiment.negative}%</span>
                 </div>
               </div>
 
               {/* Aspect Ratings */}
               <div className="space-y-4 mb-6">
                 <h3 className="font-semibold text-gray-900">Detailed Ratings</h3>
-                {Object.entries(product.sentiment.aspects).map(([aspect, score]) => (
+                {Object.entries(currentSentiment.aspects).map(([aspect, score]) => (
                   <div key={aspect} className="space-y-2">
                     <div className="flex justify-between items-center">
                       <span className="font-medium text-gray-700 capitalize text-sm">{aspect}</span>
@@ -204,7 +222,9 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <motion.div
-                        className="bg-amber-600 h-2 rounded-full"
+                        className={`h-2 rounded-full ${
+                          score >= 80 ? 'bg-green-600' : score >= 60 ? 'bg-yellow-500' : 'bg-red-500'
+                        }`}
                         initial={{ width: 0 }}
                         animate={{ width: `${score}%` }}
                         transition={{ delay: 0.6, duration: 1 }}
@@ -221,6 +241,32 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <h3 className="font-semibold text-blue-900 text-sm">AI Insights</h3>
                 </div>
                 <p className="text-blue-800 text-sm leading-relaxed">{product.dataAiHint}</p>
+              </div>
+
+              {/* Write a Review Section */}
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <h3 className="font-semibold text-gray-900 mb-3">Write a Review</h3>
+                <textarea
+                  value={reviewText}
+                  onChange={(e) => setReviewText(e.target.value)}
+                  placeholder="Share your experience..."
+                  className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm mb-3"
+                  rows={3}
+                />
+                <button
+                  onClick={handleReviewSubmit}
+                  disabled={isAnalyzing || !reviewText.trim()}
+                  className="w-full bg-gray-900 text-white py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {isAnalyzing ? (
+                    <>
+                      <Sparkles className="w-4 h-4 animate-spin" />
+                      Analyzing...
+                    </>
+                  ) : (
+                    "Submit Review"
+                  )}
+                </button>
               </div>
             </div>
           </motion.div>

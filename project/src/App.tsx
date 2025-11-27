@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ShoppingCart, Sparkles } from "lucide-react";
 //import { FaStore } from "react-icons/fa";
 import { TbBrandWalmart } from "react-icons/tb";
@@ -13,11 +13,14 @@ import RecommendationPanel from "./components/RecommendationPanel";
 import RecipeShoppingList from "./components/RecipeShoppingList";
 import AISearchLoader from "./components/AISearchLoader";
 import { useCart } from "./hooks/useCart";
-import { products } from "./data/products";
-import { Product, SearchIntent } from "./types";
+// import { products } from "./data/products"; // Removed static import
+import { Product, SearchIntent, RecipeDetails } from "./types";
 import { GeminiService } from "./services/geminiService";
 
+import NotFoundState from "./components/NotFoundState";
+
 function App() {
+  const [products, setProducts] = useState<Product[]>([]); // Added products state
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [relatedResults, setRelatedResults] = useState<Product[]>([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -29,6 +32,7 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   // Indicates whether the user has performed at least one search during the current session
   const [hasSearched, setHasSearched] = useState(false);
+  const [recipeDetails, setRecipeDetails] = useState<RecipeDetails | null>(null);
 
   const {
     cartItems,
@@ -46,6 +50,13 @@ function App() {
   const geminiService = GeminiService.getInstance();
 
   useEffect(() => {
+    // Fetch products on mount
+    const fetchProducts = async () => {
+      const fetchedProducts = await geminiService.getProducts();
+      setProducts(fetchedProducts);
+    };
+    fetchProducts();
+
     // Show welcome screen briefly
     const timer = setTimeout(() => setShowWelcome(false), 2000);
     return () => clearTimeout(timer);
@@ -58,23 +69,35 @@ function App() {
     }
   }, [cartItems]);
 
+  const [searchHistory, setSearchHistory] = useState<string[]>([]);
+
   const handleSearch = async (query: string) => {
     setCurrentSearchQuery(query);
     setIsSearching(true);
     setHasSearched(true);
+    setSearchHistory(prev => [...prev, query]);
 
     try {
       // Show loading for at least 4 seconds to display the full animation
       const searchPromise = (async () => {
-        const intent = await geminiService.extractSearchIntent(query);
+        const productNames = products.map(p => p.name);
+        const intent = await geminiService.extractSearchIntent(query, productNames);
         setSearchIntent(intent);
+
+        // Fetch recipe details if this is a recipe search
+        if (intent.type === "recipe") {
+          const details = await geminiService.getRecipeDetails(query);
+          setRecipeDetails(details);
+        } else {
+          setRecipeDetails(null);
+        }
 
         const { strictResults, relatedResults } = searchProducts(intent);
         setSearchResults(strictResults);
         setRelatedResults(relatedResults);
 
         // Generate contextual recommendations
-        await generateRecommendations();
+        await generateRecommendations(intent);
       })();
 
       const minLoadingTime = new Promise((resolve) =>
@@ -86,7 +109,7 @@ function App() {
       console.error("Search error:", error);
     } finally {
       setIsSearching(false);
-      setCurrentSearchQuery("");
+      // Keep the query to display in the UI
     }
   };
 
@@ -101,18 +124,21 @@ function App() {
     // Strict filtering
     // 1. By price range if specified
     if (priceRange) {
-      filtered = filtered.filter(
-        (product) =>
-          product.price <= priceRange.max && product.price >= priceRange.min
-      );
+      if (priceRange.max !== undefined) {
+        filtered = filtered.filter((product) => product.price <= priceRange.max!);
+      }
+      if (priceRange.min !== undefined) {
+        filtered = filtered.filter((product) => product.price >= priceRange.min!);
+      }
     }
 
-    // 2. By category
-    if (intent.category) {
-      filtered = filtered.filter(
-        (product) =>
-          product.category.toLowerCase() === intent.category?.toLowerCase()
-      );
+    // 2. By category (skip for recipe searches as ingredients come from multiple categories)
+    if (intent.category && intent.type !== "recipe") {
+      filtered = filtered.filter((product) => {
+        const productCat = product.category.toLowerCase();
+        const intentCat = intent.category!.toLowerCase();
+        return productCat.includes(intentCat) || intentCat.includes(productCat);
+      });
     }
 
     // 3. By keywords/tags (skip for recipe searches as they use ingredients)
@@ -121,19 +147,47 @@ function App() {
         const searchText = `${product.name} ${
           product.description
         } ${product.tags?.join(" ")} ${product.dataAiHint}`.toLowerCase();
-        return intent.keywords.some((keyword) =>
-          searchText.includes(keyword.toLowerCase())
-        );
+        
+        return intent.keywords.some((keyword) => {
+          const lowerKeyword = keyword.toLowerCase();
+          // Check exact match
+          if (searchText.includes(lowerKeyword)) return true;
+          
+          // Check singular form if plural
+          if (lowerKeyword.endsWith('s')) {
+            const singular = lowerKeyword.slice(0, -1);
+            if (searchText.includes(singular)) return true;
+          }
+          
+          // Check plural form if singular (simple check)
+          if (searchText.includes(lowerKeyword + 's')) return true;
+          
+          return false;
+        });
       });
     }
 
-    // 4. By ingredients for recipes
+    // 4. By ingredients for recipes - use strict matching
     if (intent.ingredients && intent.ingredients.length > 0) {
-      filtered = filtered.filter((product) =>
-        intent.ingredients?.some((ingredient) =>
-          product.tags?.includes(ingredient.toLowerCase())
-        )
-      );
+      filtered = filtered.filter((product) => {
+        const productText = `${product.name} ${product.dataAiHint} ${product.tags?.join(" ") || ""}`.toLowerCase();
+        return intent.ingredients?.some((ingredient) => {
+          const ingredientLower = ingredient.toLowerCase();
+          
+          // Try exact phrase match first
+          if (productText.includes(ingredientLower)) return true;
+
+          // Strict matching: Require ALL significant words to be present
+          // This prevents "Sushi Rice" from matching "Basmati Rice" (which has "Rice" but not "Sushi")
+          const words = ingredientLower.split(" ").filter(w => w.length > 2);
+          
+          if (words.length > 0) {
+             return words.every(word => productText.includes(word));
+          }
+          
+          return false;
+        });
+      });
     }
 
     // Sort both by relevance (sentiment score)
@@ -151,7 +205,11 @@ function App() {
     if (priceRange) {
       // Show same category items within price range first
       relatedResults = products
-        .filter((p) => p.price <= priceRange.max && p.price >= priceRange.min)
+        .filter((p) => {
+          const matchesMax = priceRange.max !== undefined ? p.price <= priceRange.max : true;
+          const matchesMin = priceRange.min !== undefined ? p.price >= priceRange.min : true;
+          return matchesMax && matchesMin;
+        })
         .sort(sortFn);
 
       // Then show same category items regardless of price
@@ -180,9 +238,14 @@ function App() {
             (intent.category &&
               p.category.toLowerCase() === intent.category.toLowerCase()) ||
             (intent.keywords.length > 0 &&
-              intent.keywords.some((kw) =>
-                p.tags?.some((t) => t.includes(kw.toLowerCase()))
-              ))
+              intent.keywords.some((kw) => {
+                const keyword = kw.toLowerCase();
+                return (
+                  p.name.toLowerCase().includes(keyword) ||
+                  p.description.toLowerCase().includes(keyword) ||
+                  p.tags?.some((t) => t.toLowerCase().includes(keyword))
+                );
+              }))
         )
         .sort(sortFn)
         .filter((p) => !strictResults.some((sp) => sp.id === p.id));
@@ -191,38 +254,16 @@ function App() {
     return { strictResults, relatedResults };
   };
 
-  const generateRecommendations = async () => {
+  const generateRecommendations = async (currentIntent?: SearchIntent) => {
     try {
       const context = {
         currentCart: cartItems,
-        searchHistory: [],
-        category: searchIntent?.category,
-        budget: searchIntent?.budget,
+        searchHistory: searchHistory,
+        category: currentIntent?.category,
+        budget: currentIntent?.priceRange?.max,
       };
 
-      // Simple recommendation logic based on categories and sentiment
-      let recommended = products.filter((product) => {
-        // Don't recommend items already in cart
-        if (cartItems.some((item) => item.product.id === product.id))
-          return false;
-
-        // Recommend based on cart categories
-        const cartCategories = cartItems.map((item) => item.product.category);
-        if (
-          cartCategories.length > 0 &&
-          cartCategories.includes(product.category)
-        ) {
-          return true;
-        }
-
-        // Recommend high-sentiment products
-        const sentimentScore =
-          product.sentiment.positive - product.sentiment.negative;
-        return sentimentScore > 70;
-      });
-
-      // Limit to 4 recommendations
-      recommended = recommended.slice(0, 4);
+      const recommended = await geminiService.generateRecommendations(context);
       setRecommendations(recommended);
     } catch (error) {
       console.error("Recommendation error:", error);
@@ -238,6 +279,7 @@ function App() {
   const handleOrderComplete = () => {
     clearCart();
     setSearchResults([]);
+    setRelatedResults([]); // Fix: Clear related results to ensure homepage shows
     setSearchIntent(null);
     setRecommendations([]);
     setSelectedProduct(null); // Ensure no product detail is open
@@ -401,6 +443,12 @@ function App() {
               ingredients={searchResults}
               onAddToCart={addToCart}
               onAddAllToCart={handleAddAllToCart}
+              recipeInstructions={recipeDetails ? {
+                steps: recipeDetails.steps,
+                prepTime: recipeDetails.prepTime,
+                servings: recipeDetails.servings,
+                description: recipeDetails.description
+              } : undefined}
             />
           )}
         </AnimatePresence>
@@ -434,6 +482,13 @@ function App() {
                     </span>
                   </div>
                 )}
+              </div>
+
+              {/* Debug Info - Remove in production */}
+              <div className="mb-4 p-4 bg-gray-100 rounded text-xs font-mono">
+                <p>Type: {searchIntent?.type}</p>
+                <p>Category: {searchIntent?.category}</p>
+                <p>Ingredients: {searchIntent?.ingredients?.join(", ")}</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -486,23 +541,7 @@ function App() {
           {searchResults.length === 0 &&
             relatedResults.length === 0 &&
             hasSearched && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="mb-12"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="text-2xl">😕</span>
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    Oops, we couldn't find any matching products
-                  </h3>
-                </div>
-                <div className="mb-4 text-gray-700">
-                  Try searching for something else or browse our featured
-                  products below:
-                </div>
-              </motion.div>
+              <NotFoundState type="general" query={currentSearchQuery} />
             )}
         </AnimatePresence>
 
@@ -526,7 +565,7 @@ function App() {
                 Featured Products
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {products.slice(0, 8).map((product) => (
+                {products.slice(0, 40).map((product) => (
                   <ProductCard
                     key={product.id}
                     product={product}

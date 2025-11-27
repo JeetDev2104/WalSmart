@@ -668,5 +668,135 @@ export const products: Product[] = [
     dataAiHint: "premium basmati rice",
     tags: ["ingredient: biryani", "ingredient: pilaf", "rice variety", "premium grain"],
   },
+  {
+    id: "31",
+    name: "Sushi Rice (5 lb)",
+    description: "Premium short-grain rice for authentic sushi.",
+    longDescription:
+      "High-quality short-grain rice that becomes sticky when cooked, essential for making sushi rolls and nigiri. Also great for rice bowls and pudding.",
+    price: 14.99,
+    image:
+      "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=60",
+    category: "Pantry",
+    sentiment: {
+      positive: 95,
+      negative: 5,
+      aspects: {
+        stickiness: 98,
+        texture: 96,
+        quality: 94,
+      },
+    },
+    dataAiHint: "sushi rice",
+    tags: ["ingredient: sushi", "rice variety", "sticky rice"],
+  },
+  {
+    id: "32",
+    name: "Nori Seaweed Sheets (50 ct)",
+    description: "Roasted seaweed sheets for sushi rolls.",
+    longDescription:
+      "Crisp and flavorful roasted seaweed sheets (Nori). Essential for wrapping sushi rolls (maki) and hand rolls (temaki). Rich in vitamins and minerals.",
+    price: 11.99,
+    image:
+      "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=800&q=60",
+    category: "Pantry",
+    sentiment: {
+      positive: 93,
+      negative: 7,
+      aspects: {
+        crispness: 95,
+        flavor: 92,
+        quality: 94,
+      },
+    },
+    dataAiHint: "nori seaweed",
+    tags: ["ingredient: sushi", "seaweed", "asian cuisine"],
+  },
+  {
+    id: "33",
+    name: "Rice Vinegar (12 oz)",
+    description: "Mild and slightly sweet vinegar for sushi rice.",
+    longDescription:
+      "Essential for seasoning sushi rice. This rice vinegar has a mild acidity and a hint of sweetness. Also great for salad dressings and marinades.",
+    price: 4.49,
+    image:
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=60",
+    category: "Pantry",
+    sentiment: {
+      positive: 91,
+      negative: 9,
+      aspects: {
+        flavor: 93,
+        quality: 90,
+      },
+    },
+    dataAiHint: "rice vinegar",
+    tags: ["ingredient: sushi", "condiment", "vinegar"],
+  },
+  {
+    id: "34",
+    name: "Wasabi Paste (Tube)",
+    description: "Spicy horseradish paste for sushi.",
+    longDescription:
+      "Add a kick to your sushi with this convenient wasabi paste. Made from real horseradish, it provides the characteristic heat and flavor that pairs perfectly with raw fish.",
+    price: 3.99,
+    image:
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=60",
+    category: "Pantry",
+    sentiment: {
+      positive: 88,
+      negative: 12,
+      aspects: {
+        spiciness: 95,
+        flavor: 89,
+      },
+    },
+    dataAiHint: "wasabi",
+    tags: ["ingredient: sushi", "condiment", "spicy"],
+  },
+  {
+    id: "35",
+    name: "Garam Masala Spice Blend",
+    description: "Aromatic spice blend for Indian cooking.",
+    longDescription:
+      "A traditional blend of ground spices including cinnamon, cardamom, cloves, and cumin. Essential for adding warmth and depth to biryani, curries, and lentil dishes.",
+    price: 5.99,
+    image:
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=60",
+    category: "Pantry",
+    sentiment: {
+      positive: 94,
+      negative: 6,
+      aspects: {
+        aroma: 97,
+        flavor: 95,
+        quality: 93,
+      },
+    },
+    dataAiHint: "garam masala",
+    tags: ["ingredient: biryani", "ingredient: curry", "spice blend"],
+  },
+  {
+    id: "36",
+    name: "Plain Yogurt (32 oz)",
+    description: "Creamy and tangy plain yogurt.",
+    longDescription:
+      "Rich and creamy plain yogurt with live active cultures. Perfect for making marinades for biryani, raita, or eating on its own with fruit and granola.",
+    price: 3.49,
+    image:
+      "https://images.unsplash.com/photo-1571212515416-f223d6385708?auto=format&fit=crop&w=800&q=60",
+    category: "Dairy & Eggs",
+    sentiment: {
+      positive: 92,
+      negative: 8,
+      aspects: {
+        creaminess: 95,
+        taste: 93,
+        freshness: 94,
+      },
+    },
+    dataAiHint: "plain yogurt",
+    tags: ["ingredient: biryani", "ingredient: marinade", "dairy"],
+  },
 ];
 

@@ -1,6 +1,6 @@
-import React from 'react';
-import { ChefHat, ShoppingCart, Plus } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { ChefHat, ShoppingCart, Plus, Clock, Users, ChevronDown, ChevronUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Product } from '../types';
 
 interface RecipeShoppingListProps {
@@ -8,14 +8,22 @@ interface RecipeShoppingListProps {
   ingredients: Product[];
   onAddToCart: (product: Product) => void;
   onAddAllToCart: () => void;
+  recipeInstructions?: {
+    steps: string[];
+    prepTime: string;
+    servings: number;
+    description?: string;
+  };
 }
 
 const RecipeShoppingList: React.FC<RecipeShoppingListProps> = ({
   recipeName,
   ingredients,
   onAddToCart,
-  onAddAllToCart
+  onAddAllToCart,
+  recipeInstructions
 }) => {
+  const [showInstructions, setShowInstructions] = useState(false);
   const totalPrice = ingredients.reduce((sum, product) => sum + product.price, 0);
 
   return (
@@ -29,9 +37,22 @@ const RecipeShoppingList: React.FC<RecipeShoppingListProps> = ({
         <h3 className="text-2xl font-bold text-gray-900">Recipe Shopping List</h3>
       </div>
       
-      <p className="text-gray-700 mb-6">
+      <p className="text-gray-700 mb-4">
         Perfect ingredients for making <span className="font-semibold text-orange-700">{recipeName}</span>
       </p>
+
+      {recipeInstructions && (
+        <div className="mb-6 flex items-center gap-4 text-sm text-gray-600">
+          <div className="flex items-center gap-2">
+            <Clock className="w-4 h-4" />
+            <span>{recipeInstructions.prepTime}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Users className="w-4 h-4" />
+            <span>{recipeInstructions.servings} servings</span>
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {ingredients.map((ingredient, index) => (
@@ -65,7 +86,7 @@ const RecipeShoppingList: React.FC<RecipeShoppingListProps> = ({
         ))}
       </div>
 
-      <div className="flex items-center justify-between bg-white rounded-lg p-4 border-2 border-orange-200">
+      <div className="flex items-center justify-between bg-white rounded-lg p-4 border-2 border-orange-200 mb-4">
         <div>
           <p className="text-gray-600">Total for recipe ingredients:</p>
           <p className="text-2xl font-bold text-orange-600">₹{totalPrice.toFixed(2)}</p>
@@ -80,6 +101,53 @@ const RecipeShoppingList: React.FC<RecipeShoppingListProps> = ({
           Add All to Cart
         </motion.button>
       </div>
+
+      {recipeInstructions && recipeInstructions.steps.length > 0 && (
+        <div className="bg-white rounded-lg p-4 border border-orange-200">
+          <button
+            onClick={() => setShowInstructions(!showInstructions)}
+            className="w-full flex items-center justify-between text-left"
+          >
+            <h4 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+              <ChefHat className="w-5 h-5 text-orange-600" />
+              Cooking Instructions
+            </h4>
+            {showInstructions ? (
+              <ChevronUp className="w-5 h-5 text-gray-600" />
+            ) : (
+              <ChevronDown className="w-5 h-5 text-gray-600" />
+            )}
+          </button>
+
+          <AnimatePresence>
+            {showInstructions && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                {recipeInstructions.description && (
+                  <p className="text-gray-600 mt-4 mb-4 italic">
+                    {recipeInstructions.description}
+                  </p>
+                )}
+                <ol className="mt-4 space-y-3">
+                  {recipeInstructions.steps.map((step, index) => (
+                    <li key={index} className="flex gap-3">
+                      <span className="flex-shrink-0 w-6 h-6 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                        {index + 1}
+                      </span>
+                      <span className="text-gray-700 flex-1">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
     </motion.div>
   );
 };

@@ -1,0 +1,912 @@
+[
+  {
+    "id": "31",
+    "name": "Sona Masoori Rice",
+    "description": "Lightweight and aromatic medium-grain rice.",
+    "longDescription": "This is a premium Sona Masoori Rice. Lightweight and aromatic medium-grain rice. It is designed for high quality and customer satisfaction.",
+    "price": 15.99,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "32",
+    "name": "Brown Basmati Rice",
+    "description": "Whole grain goodness with a nutty flavor.",
+    "longDescription": "This is a premium Brown Basmati Rice. Whole grain goodness with a nutty flavor. It is designed for high quality and customer satisfaction.",
+    "price": 14.99,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "33",
+    "name": "Jasmine Rice 10lb",
+    "description": "Fragrant long-grain rice for family meals.",
+    "longDescription": "This is a premium Jasmine Rice 10lb. Fragrant long-grain rice for family meals. It is designed for high quality and customer satisfaction.",
+    "price": 18.99,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "34",
+    "name": "Arborio Rice",
+    "description": "Creamy and starchy, perfect for risotto.",
+    "longDescription": "This is a premium Arborio Rice. Creamy and starchy, perfect for risotto. It is designed for high quality and customer satisfaction.",
+    "price": 8.99,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "35",
+    "name": "Sushi Rice",
+    "description": "Sticky and short-grain, ideal for sushi rolls.",
+    "longDescription": "This is a premium Sushi Rice. Sticky and short-grain, ideal for sushi rolls. It is designed for high quality and customer satisfaction.",
+    "price": 9.99,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "36",
+    "name": "Wild Rice Mix",
+    "description": "Nutty and chewy blend of wild and long-grain rice.",
+    "longDescription": "This is a premium Wild Rice Mix. Nutty and chewy blend of wild and long-grain rice. It is designed for high quality and customer satisfaction.",
+    "price": 11.99,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "37",
+    "name": "Red Cargo Rice",
+    "description": "Nutrient-rich unpolished rice with a chewy texture.",
+    "longDescription": "This is a premium Red Cargo Rice. Nutrient-rich unpolished rice with a chewy texture. It is designed for high quality and customer satisfaction.",
+    "price": 10.99,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "38",
+    "name": "Black Rice",
+    "description": "Antioxidant-rich 'forbidden rice' with a sweet flavor.",
+    "longDescription": "This is a premium Black Rice. Antioxidant-rich 'forbidden rice' with a sweet flavor. It is designed for high quality and customer satisfaction.",
+    "price": 12.99,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "39",
+    "name": "Parboiled Rice",
+    "description": "Partially boiled in the husk, retains more vitamins.",
+    "longDescription": "This is a premium Parboiled Rice. Partially boiled in the husk, retains more vitamins. It is designed for high quality and customer satisfaction.",
+    "price": 7.99,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "40",
+    "name": "Sticky Glutinous Rice",
+    "description": "Sweet and sticky, great for desserts and dumplings.",
+    "longDescription": "This is a premium Sticky Glutinous Rice. Sweet and sticky, great for desserts and dumplings. It is designed for high quality and customer satisfaction.",
+    "price": 8.49,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e30c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 90,
+      "negative": 10,
+      "aspects": {
+        "quality": 92,
+        "taste": 90,
+        "freshness": 95
+      }
+    },
+    "dataAiHint": "rice",
+    "tags": [
+      "ingredient: rice dish",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "41",
+    "name": "Dark Soy Sauce",
+    "description": "Rich and thick soy sauce for coloring and flavor.",
+    "longDescription": "This is a premium Dark Soy Sauce. Rich and thick soy sauce for coloring and flavor. It is designed for high quality and customer satisfaction.",
+    "price": 4.99,
+    "image": "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "soy sauce",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "42",
+    "name": "Light Soy Sauce",
+    "description": "Salty and thin, essential for seasoning.",
+    "longDescription": "This is a premium Light Soy Sauce. Salty and thin, essential for seasoning. It is designed for high quality and customer satisfaction.",
+    "price": 3.99,
+    "image": "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "soy sauce",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "43",
+    "name": "Oyster Sauce",
+    "description": "Savory and sweet sauce for stir-fries.",
+    "longDescription": "This is a premium Oyster Sauce. Savory and sweet sauce for stir-fries. It is designed for high quality and customer satisfaction.",
+    "price": 5.49,
+    "image": "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "oyster sauce",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "44",
+    "name": "Sesame Oil",
+    "description": "Toasted sesame oil for aromatic finishing.",
+    "longDescription": "This is a premium Sesame Oil. Toasted sesame oil for aromatic finishing. It is designed for high quality and customer satisfaction.",
+    "price": 6.99,
+    "image": "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "oil",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "45",
+    "name": "Chili Oil",
+    "description": "Spicy oil infused with chili flakes.",
+    "longDescription": "This is a premium Chili Oil. Spicy oil infused with chili flakes. It is designed for high quality and customer satisfaction.",
+    "price": 5.99,
+    "image": "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "oil",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "46",
+    "name": "Turmeric Powder",
+    "description": "Bright yellow spice with earthy flavor.",
+    "longDescription": "This is a premium Turmeric Powder. Bright yellow spice with earthy flavor. It is designed for high quality and customer satisfaction.",
+    "price": 3.49,
+    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "spice",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "47",
+    "name": "Cumin Seeds",
+    "description": "Warm and earthy seeds for tempering.",
+    "longDescription": "This is a premium Cumin Seeds. Warm and earthy seeds for tempering. It is designed for high quality and customer satisfaction.",
+    "price": 2.99,
+    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "spice",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "48",
+    "name": "Coriander Powder",
+    "description": "Citrusy and nutty ground coriander.",
+    "longDescription": "This is a premium Coriander Powder. Citrusy and nutty ground coriander. It is designed for high quality and customer satisfaction.",
+    "price": 3.29,
+    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "spice",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "49",
+    "name": "Garam Masala",
+    "description": "Aromatic blend of warming spices.",
+    "longDescription": "This is a premium Garam Masala. Aromatic blend of warming spices. It is designed for high quality and customer satisfaction.",
+    "price": 4.49,
+    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "spice",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "50",
+    "name": "Red Chili Powder",
+    "description": "Spicy ground chilies for heat.",
+    "longDescription": "This is a premium Red Chili Powder. Spicy ground chilies for heat. It is designed for high quality and customer satisfaction.",
+    "price": 3.99,
+    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=60",
+    "category": "Pantry",
+    "sentiment": {
+      "positive": 94,
+      "negative": 6,
+      "aspects": {
+        "flavor": 96,
+        "quality": 93
+      }
+    },
+    "dataAiHint": "spice",
+    "tags": [
+      "ingredient: cooking",
+      "pantry staple"
+    ]
+  },
+  {
+    "id": "51",
+    "name": "Arctic Parka",
+    "description": "Heavy-duty winter parka with faux fur hood.",
+    "longDescription": "This is a premium Arctic Parka. Heavy-duty winter parka with faux fur hood. It is designed for high quality and customer satisfaction.",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "52",
+    "name": "Bomber Jacket",
+    "description": "Classic style bomber jacket in olive green.",
+    "longDescription": "This is a premium Bomber Jacket. Classic style bomber jacket in olive green. It is designed for high quality and customer satisfaction.",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "53",
+    "name": "Leather Biker Jacket",
+    "description": "Genuine leather jacket with asymmetrical zip.",
+    "longDescription": "This is a premium Leather Biker Jacket. Genuine leather jacket with asymmetrical zip. It is designed for high quality and customer satisfaction.",
+    "price": 249.99,
+    "image": "https://images.unsplash.com/photo-1551028919-30164bdc5800?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "54",
+    "name": "Windbreaker",
+    "description": "Lightweight and colorful windbreaker for sports.",
+    "longDescription": "This is a premium Windbreaker. Lightweight and colorful windbreaker for sports. It is designed for high quality and customer satisfaction.",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "55",
+    "name": "Trench Coat",
+    "description": "Elegant beige trench coat for rainy days.",
+    "longDescription": "This is a premium Trench Coat. Elegant beige trench coat for rainy days. It is designed for high quality and customer satisfaction.",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "56",
+    "name": "Quilted Vest",
+    "description": "Warm sleeveless vest for layering.",
+    "longDescription": "This is a premium Quilted Vest. Warm sleeveless vest for layering. It is designed for high quality and customer satisfaction.",
+    "price": 59.99,
+    "image": "https://images.unsplash.com/photo-1613715642502-735a725f522c?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "57",
+    "name": "Ski Jacket",
+    "description": "Waterproof and insulated jacket for snow sports.",
+    "longDescription": "This is a premium Ski Jacket. Waterproof and insulated jacket for snow sports. It is designed for high quality and customer satisfaction.",
+    "price": 179.99,
+    "image": "https://images.unsplash.com/photo-1608256249259-8367ca9b2c89?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "58",
+    "name": "Varsity Jacket",
+    "description": "Collegiate style jacket with wool body.",
+    "longDescription": "This is a premium Varsity Jacket. Collegiate style jacket with wool body. It is designed for high quality and customer satisfaction.",
+    "price": 99.99,
+    "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "59",
+    "name": "Faux Fur Coat",
+    "description": "Luxurious and soft faux fur coat.",
+    "longDescription": "This is a premium Faux Fur Coat. Luxurious and soft faux fur coat. It is designed for high quality and customer satisfaction.",
+    "price": 149.99,
+    "image": "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "60",
+    "name": "Rain Poncho",
+    "description": "Packable waterproof poncho.",
+    "longDescription": "This is a premium Rain Poncho. Packable waterproof poncho. It is designed for high quality and customer satisfaction.",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1628427255527-e1c4e1a1a6d2?auto=format&fit=crop&w=800&q=60",
+    "category": "Jackets",
+    "sentiment": {
+      "positive": 92,
+      "negative": 8,
+      "aspects": {
+        "warmth": 95,
+        "style": 94,
+        "comfort": 90
+      }
+    },
+    "dataAiHint": "jacket",
+    "tags": [
+      "clothing",
+      "outerwear"
+    ]
+  },
+  {
+    "id": "61",
+    "name": "Noise Cancelling Headphones",
+    "description": "Over-ear headphones with active noise cancellation.",
+    "longDescription": "This is a premium Noise Cancelling Headphones. Over-ear headphones with active noise cancellation. It is designed for high quality and customer satisfaction.",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  },
+  {
+    "id": "62",
+    "name": "Wireless Earbuds",
+    "description": "True wireless earbuds with charging case.",
+    "longDescription": "This is a premium Wireless Earbuds. True wireless earbuds with charging case. It is designed for high quality and customer satisfaction.",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  },
+  {
+    "id": "63",
+    "name": "Smartwatch Series 5",
+    "description": "Fitness tracker and smartwatch with heart rate monitor.",
+    "longDescription": "This is a premium Smartwatch Series 5. Fitness tracker and smartwatch with heart rate monitor. It is designed for high quality and customer satisfaction.",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  },
+  {
+    "id": "64",
+    "name": "4K Action Camera",
+    "description": "Waterproof action camera for capturing adventures.",
+    "longDescription": "This is a premium 4K Action Camera. Waterproof action camera for capturing adventures. It is designed for high quality and customer satisfaction.",
+    "price": 149.99,
+    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  },
+  {
+    "id": "65",
+    "name": "Bluetooth Speaker",
+    "description": "Portable speaker with 360-degree sound.",
+    "longDescription": "This is a premium Bluetooth Speaker. Portable speaker with 360-degree sound. It is designed for high quality and customer satisfaction.",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  },
+  {
+    "id": "66",
+    "name": "Gaming Mouse",
+    "description": "Ergonomic mouse with customizable RGB lighting.",
+    "longDescription": "This is a premium Gaming Mouse. Ergonomic mouse with customizable RGB lighting. It is designed for high quality and customer satisfaction.",
+    "price": 59.99,
+    "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  },
+  {
+    "id": "67",
+    "name": "Mechanical Keyboard",
+    "description": "Tactile mechanical keyboard for typing and gaming.",
+    "longDescription": "This is a premium Mechanical Keyboard. Tactile mechanical keyboard for typing and gaming. It is designed for high quality and customer satisfaction.",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b91a603?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  },
+  {
+    "id": "68",
+    "name": "Tablet Pro 11",
+    "description": "High-performance tablet for creativity and work.",
+    "longDescription": "This is a premium Tablet Pro 11. High-performance tablet for creativity and work. It is designed for high quality and customer satisfaction.",
+    "price": 699.99,
+    "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  },
+  {
+    "id": "69",
+    "name": "E-Reader",
+    "description": "Glare-free display for comfortable reading.",
+    "longDescription": "This is a premium E-Reader. Glare-free display for comfortable reading. It is designed for high quality and customer satisfaction.",
+    "price": 119.99,
+    "image": "https://images.unsplash.com/photo-1592434134753-a70baf7979d5?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  },
+  {
+    "id": "70",
+    "name": "Smart Home Hub",
+    "description": "Voice-controlled hub for smart home devices.",
+    "longDescription": "This is a premium Smart Home Hub. Voice-controlled hub for smart home devices. It is designed for high quality and customer satisfaction.",
+    "price": 99.99,
+    "image": "https://images.unsplash.com/photo-1558089687-f282ffcbc126?auto=format&fit=crop&w=800&q=60",
+    "category": "Electronics",
+    "sentiment": {
+      "positive": 95,
+      "negative": 5,
+      "aspects": {
+        "performance": 96,
+        "quality": 94,
+        "value": 90
+      }
+    },
+    "dataAiHint": "electronics",
+    "tags": [
+      "gadget",
+      "tech"
+    ]
+  }
+]

@@ -20,6 +20,17 @@ export interface Product {
       userExperience?: number;
       aroma?: number;
       texture?: number;
+      taste?: number;
+      warmth?: number;
+      style?: number;
+      performance?: number;
+      stickiness?: number;
+      crispness?: number;
+      spiciness?: number;
+      creaminess?: number;
+      value?: number;
+      convenience?: number;
+      authenticity?: number;
     };
   };
   dataAiHint: string;
@@ -32,12 +43,12 @@ export interface CartItem {
 }
 
 export interface SearchIntent {
-  type: 'product' | 'recipe' | 'skincare' | 'clothing';
+  type: 'product' | 'recipe' | 'skincare' | 'clothing' | 'electronics' | 'grocery';
   keywords: string[];
   budget?: number;
   priceRange?: {
-    min: number;
-    max: number;
+    min?: number;
+    max?: number;
   };
   category?: string;
   ingredients?: string[];
@@ -50,4 +61,13 @@ export interface RecommendationContext {
   searchHistory: string[];
   category?: string;
   budget?: number;
+}
+
+export interface RecipeDetails {
+  name: string;
+  ingredients: string[];
+  steps: string[];
+  prepTime: string;
+  servings: number;
+  description: string;
 }

@@ -26,6 +26,11 @@ export type SentimentAspects = {
   gentleness?:number;
   taste?:number;
   sweetness?:number;
+  aroma?: number;
+  stickiness?: number;
+  crispness?: number;
+  spiciness?: number;
+  creaminess?: number;
 };
 
 // Main product type
