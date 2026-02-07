@@ -16,7 +16,7 @@ app = FastAPI()
 # Enable CORS for local dev (Vite:5173, Next:3000)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # In production, set this to your Netlify URL for better security
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
